@@ -17,7 +17,7 @@ module.exports = class Employee {
         return db.execute('SELECT * FROM employee');
     }
     static delete(id) {
-        return db.execute('DELETE FROM employee WHERE id = ?',[id]);
+        return db.execute('DELETE employee,salary FROM employee INNER JOIN salary ON salary.emp_id = employee.id WHERE employee.id = ?',[id]);
     }
     static Update(id,name,emp_no,join_date,end_date) {
         return db.execute('UPDATE employee SET name = ?, emp_no = ?,join_date = ?, end_date = ? WHERE id = ?',[name , emp_no ,join_date, end_date,id]);
