@@ -12,8 +12,8 @@ exports.getDepartment = (req,res, next) => {
 
 exports.AddDepartment = (req, res, next) => {
     const name = req.body.name;
-    const date = req.body.date;
-    const dept = new Dept(null, name, date);
+    const created_date = req.body.created_date;
+    const dept = new Dept(null, name, created_date);
     dept.save()
     .then(() => 
     {
@@ -38,8 +38,8 @@ exports.DeleteDepartment = (req, res, next) => {
 exports.UpdateDepartment = (req , res , next) => {
     const id = req.params.id;
     const name = req.body.name;
-    const date = req.body.date;
-    Dept.Update(id,name , date)
+    const created_date = req.body.created_date;
+    Dept.Update(id,name , created_date)
     .then(() => {
         res.json({message : 'Department Updated!'})
     })
